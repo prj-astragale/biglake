@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  inlake:
+    container_name: biglake
+    build: .
+    ports:
+      - "81:80"
+    networks:
+      - astraglob
+
+networks:
+  astraglob:
+    name: astraglob

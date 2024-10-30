@@ -1,0 +1,19 @@
+python-dotenv==1.0.0
+uvicorn>=0.15.0,<0.16.0
+starlette>=0.19.1
+fastapi>=0.83.0
+requests>=2.7.0
+python-multipart<=0.0.5
+aiokafka>=0.7.2
+confluent-kafka<=1.9.2
+fastavro>=1.7.0
+# botocore>=1.27.67
+boto3>=1.24.67
+smart-open==6.4.0 
+aiobotocore>=2.4.0
+pandas<=2.0.3
+openpyxl<=3.1.2
+rdflib>=7.0.0
+pydantic<=2.4.2 
+# Processes
+open3d-cpu==0.17.0 # put in a .whl, file >400mos :/ see Dockerfile

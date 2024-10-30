@@ -1,0 +1,33 @@
+stages:
+  - build
+  # - deploy
+
+kaniko-build:
+  stage: build
+  tags:
+    - shared
+  rules:
+    - if: $CI_COMMIT_TAG
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
+  # when: manual
+
+# deploy-to-prod:
+#   image: tiangolo/docker-with-compose
+#   stage: deploy
+#   tags:
+#     - deployrunner
+#   before_script:
+#     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+#   script:
+#     - cat docker-compose.yml
+#     - docker stack deploy -c docker-compose.yml --prune --with-registry-auth "hugo-wwwomp"
+#   rules:
+#     - if: $CI_COMMIT_TAG
+#   when: manual
