@@ -55,15 +55,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 + clean `InlkSchema`, most of the current properties are duplicates of `confluent_confluent_kafka.schema_registry.schema_registry_client.Schema` (herited from v0.2, where Schema Registry was not used, **Blocking** still waiting for updates in this API).
 + true *async* behaviour, part of the APIs doesn't relies on FastAPI capabilities as they should. **Blocking:** `aiokafka.AIOKafkaAdmin` is still delayed by old release. 
 + Overhaul the behavior of the POST requests, from an *all-in-one* POST request to two POST requests, one with a binary retrieving a job `puuid` in HTTP response 2OO and another from the same client with the metadata and the job `puuid` registered as `__resource_path__` (as a promise). Looser coupling, more opacity, more flexible, faster and safer.
-
-### Goals for v0.5
-+ Translate *Inlake* behavior in Apache Spark recipe. **Blocking:** Spark instance is not yet deployed.
-
-## License
-Open-source project, MIT License.
-
-## Project Status
-+ **(v0.32, 15/06/2023)** Re-activated the unsecured routes for debugging purpose. 
-+ **(v0.31, 20/02/2023)** Ninja update for kafka-key generation now featuring *schema/destination* format in addition to *schema* format to explicitly define destination database or sub-database.
-+ **(v0.3,  17/11/2022)** Schema Registry and validation with avro schema is added. For simplicity, better use protobufs rather than avro serialization.
-+ **(v0.2,  10/11/2022)** This is an actual proof of concept, working for the minimal applications envisionned. It has to evolve in the next year but is not the top priority 
