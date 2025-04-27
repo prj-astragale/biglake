@@ -15,9 +15,8 @@ import json
 # Geometries
 class RecordLightGaxxxps(BaseModel):
     scrs_label:             str
-    builtwork_type_uri:     Optional[str] = None
-    measure_type_uri:       Optional[str] = None
-    model_type_uri:         Optional[str] = None
+    bw_type_uri:     Optional[str] = None
+    event_type_uri:         Optional[str] = None
     scrs_geom_label:        Optional[str] = None
     file_creator:           str
     file_date:              str    
@@ -88,6 +87,7 @@ class RecordLightSedffea(BaseModel):
 
 
 # Processes
+## Annotations
 class PointMatchData(BaseModel):
     clouds_s3urls: List[str]
     points: List[Tuple[float, float, float]]
@@ -97,6 +97,10 @@ class LightPointMatchData(BaseModel):
     # clouds_s3urls: List[str]
     points: List[Tuple[float, float, float]]
     # list_of_points: List[str]
+
+## Aioli
+class RecordLightAioliPhotogrammetry(BaseModel):
+    scrs_label:             str
 
 
 # TESTS

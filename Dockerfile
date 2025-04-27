@@ -17,13 +17,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 COPY ./requirements.txt /code/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-
+RUN pip install --index-url https://test.pypi.org/simple/ --no-deps --upgrade --force-reinstall astraclients-MACGRS 
 
 
 COPY .env /code/.env
 COPY ./app /code/app
-# COPY ./fastfiles /code/fastfiles
-COPY ./fast_clients /code/fast_clients 
 COPY ./processors /code/processors
 
 RUN mkdir /code/uploads

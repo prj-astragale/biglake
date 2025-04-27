@@ -9,15 +9,15 @@ from dotenv import load_dotenv
 import logging
 from .loggers import logger_r
 
-from app.sessions import kafkaio
+# from app.sessions import kafkaio
 
-from app.routers import ingress, astrapi
+from app.routers import base_api
 
 
 load_dotenv()
 app = FastAPI()
-app.include_router(ingress.router)
-app.include_router(astrapi.router)
+# app.include_router(ingress.router)
+app.include_router(base_api.router)
 # templates = Jinja2Templates(directory='.')
 
 
@@ -36,24 +36,24 @@ async def startup_event():
         pass
 
     logger_r.info(f"INLAKE CONNECTING TO KAFKA : {os.environ['KAFKA_BOOTSTRAP_SERVER']}")
-    await kafkaio.connect_and_start()
-    # Create inlake topics
-    inlk_topics = [
-        os.environ["INLAKE_TOPIC_INGRESS_UNSECURED"],
-        os.environ["INLAKE_TOPIC_INGRESS_SECURED"],
-    ]
-    logger_r.info(f"INLAKE KAFKA TOPICS : {inlk_topics}")
-    for topic in inlk_topics:
-        if (topic in kafkaio._adminclient.list_topics(topic).topics) is False:
-            kafkaio.create_topic(topic)
-        else:
-            logger_r.info(f"Skipping, Topic {topic} already exists")
+    # await kafkaio.connect_and_start()
+    # # Create inlake topics
+    # inlk_topics = [
+    #     os.environ["INLAKE_TOPIC_INGRESS_UNSECURED"],
+    #     os.environ["INLAKE_TOPIC_INGRESS_SECURED"],
+    # ]
+    # logger_r.info(f"INLAKE KAFKA TOPICS : {inlk_topics}")
+    # for topic in inlk_topics:
+    #     if (topic in kafkaio._adminclient.list_topics(topic).topics) is False:
+    #         kafkaio.create_topic(topic)
+    #     else:
+    #         logger_r.info(f"Skipping, Topic {topic} already exists")
 
 
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    await kafkaio.stop()
+# @app.on_event("shutdown")
+# async def shutdown_event():
+#     await kafkaio.stop()
 
 
 @app.get("/")
