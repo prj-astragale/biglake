@@ -2,6 +2,8 @@
 
 *Inlake* is a data gateway for an *event-centric* knowledge-base system. It is intended for the smooth ingestion of: binary files and their metadatas, structured and unstructured textual information.
 
+*Inlake is part of the [Astragale](https://github.com/prj-astragale) project* 
+
 **Motivation:** This small API development provides some flexibility while adressing the requirements for data ingestion. *Inlake* is a part of the *KIBOS* architecture set up for the *Astragale* scientific project.
 
 ## Features
