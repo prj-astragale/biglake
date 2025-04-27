@@ -1,10 +1,7 @@
-# *Inlake*: a knowledge-base gateway
+# *Biglake*: a knowledge-base gateway
+*Biglake* is a data gateway for an *event-centric* knowledge-base system. It is intended for the smooth ingestion of: binary files and their metadatas, structured and unstructured textual information.
 
-*Inlake* is a data gateway for an *event-centric* knowledge-base system. It is intended for the smooth ingestion of: binary files and their metadatas, structured and unstructured textual information.
-
-*Inlake is part of the [Astragale](https://github.com/prj-astragale) project* 
-
-**Motivation:** This small API development provides some flexibility while adressing the requirements for data ingestion. *Inlake* is a part of the *KIBOS* architecture set up for the *Astragale* scientific project.
+**Motivation:** This small API development provides some flexibility while adressing the requirements for data ingestion. *Biglake is part of the [Astragale](https://github.com/prj-astragale) project* 
 
 ## Features
 + [Avro](https://avro.apache.org/) data verification and validation
@@ -37,7 +34,7 @@ Two unsecured routes (data is not checked nor Schema-validated) **only** for deb
 + `/ingress/unsecured/record-json`: textual data
 + `/ingress/unsecured/record-json-and-binary`: binary, textual metadatas
 
-# Fast_Clients
+# Notes for Fast_Clients
 ## Fast_files
 Reuse of ...
 If bottlneck and slow transfer, use _s5md_ https://github.com/peak/s5cmd (more complicated, but 12x faster than `boto3` based cli)
